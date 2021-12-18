@@ -43,8 +43,11 @@ const shortURL= 'curt/rf23rf24y';
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+app.use(auth(config)); // auth router attaches /login, /logout, and /callback routes to the baseURL
+
 
 app.get("/", (req, res) => {
+    console.log(req.oidc.isAuthenticated());
     res.render('index',{
         shortURL: shortURL,
         hidden: shortURL? "" : "hidden"
@@ -76,7 +79,6 @@ app.post('/Url', async (req, res) => {
   })
   
 //Connect to database
-//Connect to database
 connectDB();
 
 
@@ -90,5 +92,3 @@ app.use('/api/url', require('./routes/url'));
 app.listen(port, function(){
     console.log('Server started on port '+port);
 });
-
-app.use(auth(config)); // auth router attaches /login, /logout, and /callback routes to the baseURL

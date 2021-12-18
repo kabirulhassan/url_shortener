@@ -21,7 +21,6 @@ const shortid = require('shortid');
 const connectDB = require('./config/db');
 const ShortUrl = require('./models/Url')
 
-const connectDB = require('./config/db');
 const app = express();
 
 mongoose.connect('mongodb+srv://Diyasini:Riya%40123@cluster0.esnm5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')

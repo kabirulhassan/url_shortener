@@ -116,7 +116,9 @@ input:focus{
     padding: 20px 5px;
     margin: 10px 0;
 }
-
+.stat-box a, .stat-box td{
+    color: #ffcd57;
+}
 table{
     min-width: 50%;
     min-height: 70vh;
@@ -138,6 +140,10 @@ thead:last-child, tbody:last-child, tr:last-child, td:last-child, th:last-child{
     border-right: none;
 }
 
+.copy{
+    border: none;
+    border-radius: 20px;
+}
 
 
 @media screen and (max-width: 720px) {

@@ -1,4 +1,16 @@
-require('dotenv').config();
+require('dotenv').config(); //getting env variables
+
+const { auth } = require('express-openid-connect'); //openid connect for auth0
+//configuration for auth0
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.SECRET,
+    baseURL: process.env.BASEURL,
+    clientID: process.env.CLIENTID,
+    issuerBaseURL: process.env.ISSUERBASEURL
+  };
+
 const dummyURLs = 
 [{
     longUrl: 'https://www.google.com',
@@ -31,6 +43,8 @@ const shortURL= 'curt/rf23rf24y';
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
+app.use(auth(config)); // auth router attaches /login, /logout, and /callback routes to the baseURL
+
 
 app.get("/", (req, res) => {
     res.render('index',{

@@ -114,30 +114,17 @@ input:focus{
     height: 100%;
     border-radius: 20px;
     padding: 20px 5px;
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 table{
     min-width: 50%;
-    min-height: 70vh;
-}
-.table-div{
-    margin: 0 auto;
-    padding: 10px;
     border: 1px solid #ddd;
     border-radius: 1em;
-    max-width: fit-content;
+    margin: 0 auto;
+    min-height: 70vh;
+    overflow: hidden;
 }
-
-th, td{
-    border: 1px #ddd;
-    border-style: none solid solid none;
-    border-radius: 1em;
-}
-thead:last-child, tbody:last-child, tr:last-child, td:last-child, th:last-child{
-    border-right: none;
-}
-
 
 
 @media screen and (max-width: 720px) {
@@ -155,18 +142,6 @@ thead:last-child, tbody:last-child, tr:last-child, td:last-child, th:last-child{
         overflow: scroll;
         padding-top: 5px;
     }
-
-    /* Hide scrollbar for Chrome, Safari and Opera */
-    th::-webkit-scrollbar, td::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Hide scrollbar for IE, Edge and Firefox */
-  th::-webkit-scrollbar, td::-webkit-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
-
 }
 
 @media screen and (max-width: 1024px) {
@@ -175,9 +150,5 @@ thead:last-child, tbody:last-child, tr:last-child, td:last-child, th:last-child{
     }
     .navbar-nav{
         text-align: center;
-    }
-    .copy{
-        position: fixed;
-        margin: 20px 2rem 20px -2rem;
     }
 }

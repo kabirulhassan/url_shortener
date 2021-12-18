@@ -4,10 +4,11 @@
         <div class="container-fluid shortener">
             <h2>Tired of long urls ?</h2>
             <h1 class="tagline">Paste. Curt. Share.</h1>
+
             <% if (locals.error) { %>
                 <p class="error"><%= error %></p>
             <% } %>
-            <form class="url-form" action="/shortUrls" method="post">
+            <form class="url-form" action="/Url" method="post">
                 <div class="url-box">
                     <input autocomplete="off" type="text" name="fullUrl" id="fullUrl"
                         placeholder="Enter a URL to shorten">

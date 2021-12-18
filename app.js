@@ -1,24 +1,11 @@
 require('dotenv').config();
-const dummyURLs = 
-[{
-    longUrl: 'https://www.google.com',
-    shortUrl: 'https://www.google.com',
-    clicks: 0
-},
-{
-    longUrl: 'https://www.facebook.com',
-    shortUrl: 'https://www.facebook.com',
-    clicks: 0
-},
-{
-    longUrl: 'https://www.youtube.com',
-    shortUrl: 'https://www.youtube.com',
-    clicks: 0
-}];
+
 const express = require('express');
 const mongoose = require('mongoose');
-
+const shortid = require('shortid');
 const connectDB = require('./config/db');
+const ShortUrl = require('./models/Url')
+
 const app = express();
 
 mongoose.connect('mongodb+srv://Diyasini:Riya%40123@cluster0.esnm5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
@@ -37,12 +24,8 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get("/analytics", (req, res) => {
-    res.render(
-        'analytics',{
-            urls: dummyURLs
-        });
-    });
+
+  
 
 //Connect to database
 connectDB();

@@ -13,7 +13,7 @@ app.use(express.static('public'));
 app.get("/", (req, res) => {
     res.render('index',{
         shortURL: shortURL,
-        hidden: shortURL? 'hidden': ''
+        hidden: shortURL? "" : "hidden"
     });
 });
 

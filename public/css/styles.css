@@ -5,7 +5,6 @@ body{
     margin: 5px 5px 0px 5px;
     border-radius: 20px;
     padding: 0 30px;
-    /* justify-content: space-between; */
 }
 .navbar-brand{
     color: #ffcd57 !important;
@@ -50,7 +49,6 @@ input:focus{
     justify-content:end;
     background-color: black;
     height: 100%;
-    /* width: 100%; */
     border-radius: 20px;
     padding-bottom: 4rem;
 }
@@ -102,7 +100,7 @@ input:focus{
     margin: 20px 0;
 }
 .hidden{
-    /* visibility: hidden; */
+    visibility: hidden;
 }
 @media screen and (max-width: 720px) {
     .url-box>input{

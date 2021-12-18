@@ -43,7 +43,6 @@ const shortURL= 'curt/rf23rf24y';
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
-app.use(auth(config)); // auth router attaches /login, /logout, and /callback routes to the baseURL
 
 
 app.get("/", (req, res) => {
@@ -75,3 +74,4 @@ app.listen(port, function(){
     console.log('Server started on port '+port);
 });
 
+app.use(auth(config)); // auth router attaches /login, /logout, and /callback routes to the baseURL

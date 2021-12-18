@@ -27,6 +27,7 @@ const dummyURLs =
     shortUrl: 'https://www.youtube.com',
     clicks: 0
 }];
+
 const express = require('express');
 const mongoose = require('mongoose');
 const shortid = require('shortid');
@@ -44,9 +45,10 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+    const shortUrls = await ShortUrl.find()
     res.render('index',{
-        shortURL: shortURL,
+        shortURL: shortUrls,
         hidden: shortURL? "" : "hidden"
     });
 });
@@ -57,12 +59,10 @@ app.get("/analytics", (req, res) => {
         });
     });
 
-app.post('/Url', async (req, res) => {
-    await ShortUrl.create({ longUrl: req.body.Url })
+app.post('/shortUrls', async (req, res) => {
+    await ShortUrl.create({ longUrl: req.body.fullUrl })
     
-    res.render('index',{
-        shortURL: shortUrl
-    })
+    res.redirect('/')
   })
   
   app.get('/:Url', async (req, res) => {
@@ -72,7 +72,7 @@ app.post('/Url', async (req, res) => {
     shortUrl.clicks++
     shortUrl.save()
   
-    res.redirect(shortUrl.full)
+    res.redirect(Url.longUrl)
   })
   
 //Connect to database

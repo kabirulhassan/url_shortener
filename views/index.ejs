@@ -8,17 +8,19 @@
             <% if (locals.error) { %>
                 <p class="error"><%= error %></p>
             <% } %>
-            <form class="url-form" action="/Url" method="post">
+            <form class="url-form" action="/shortUrls" method="post">
                 <div class="url-box">
-                    <input autocomplete="off" type="text" name="fullUrl" id="fullUrl"
+                    <input autocomplete="off" type="url" name="fullUrl" id="fullUrl"
                         placeholder="Enter a URL to shorten">
-                    <button class="short-btn" type="submit" >curt</button>
+                    <button class="short-btn" type= "submit" >curt</button>
                 </div>
             </form>
+         
             <div class="url-box box-short <%=hidden%>">
-                <p id="short-url"><%=shortURL%></p>
+                <p id="short-url"><% shortURL %></p>
                 <button class="short-btn share-btn"><i class="fas fa-share-alt"></i></button>
             </div>
+           
         </div>
     </section>
 

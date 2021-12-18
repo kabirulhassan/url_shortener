@@ -75,7 +75,7 @@ app.post('/Url', async (req, res) => {
     res.redirect(shortUrl.full)
   })
   
-
+//Connect to database
 //Connect to database
 connectDB();
 

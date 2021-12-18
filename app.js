@@ -17,6 +17,9 @@ const dummyURLs =
 }];
 const express = require('express');
 const mongoose = require('mongoose');
+const shortid = require('shortid');
+const connectDB = require('./config/db');
+const ShortUrl = require('./models/Url')
 
 const connectDB = require('./config/db');
 const app = express();

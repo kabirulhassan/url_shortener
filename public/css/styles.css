@@ -83,6 +83,14 @@ input{
     border: none;
     border-radius: 30px;
 }
+.url-box>p{
+    vertical-align: middle;
+    text-align: center;
+    width: 90%;
+    border: none;
+    border-radius: 30px;
+    margin: auto 0;
+}
 .short-btn{
     height: 50px;
     width: 10%;
@@ -91,7 +99,12 @@ input{
     margin: 5px;
     background-color: #ffcd57;
 }
-
+.box-short{
+    margin: 20px 0;
+}
+.hidden{
+    /* visibility: hidden; */
+}
 @media screen and (max-width: 720px) {
     .url-box>input{
         width: 70%;

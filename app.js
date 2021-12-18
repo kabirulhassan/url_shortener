@@ -11,7 +11,9 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 app.get("/", (req, res) => {
-    res.render('index');
+    res.render('index',{
+        shortURL: 'curt/rf23rf24y',
+    });
 });
 
 app.listen(port, function(){

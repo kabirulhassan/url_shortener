@@ -17,6 +17,10 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/analytics", (req, res) => {
+    res.render('analytics');
+});
+
 app.listen(port, function(){
     console.log('Server started on port '+port);
 });

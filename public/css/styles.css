@@ -102,6 +102,15 @@ input:focus{
 .hidden{
     visibility: hidden;
 }
+
+.stat-box{
+    text-align: center;
+    background-color: black;
+    color: white;
+    height: 100%;
+    border-radius: 20px;
+}
+
 @media screen and (max-width: 720px) {
     .url-box>input{
         width: 70%;

@@ -1,0 +1,6 @@
+POST http://localhost:3000/api/url/shorten 
+Content-Type: application/json
+
+{
+    "longUrl": "https://www.google.com/search?q=google+meet&oq=g&aqs=chrome.1.69i60j69i59l3j69i60l4.1647j0j7&sourceid=chrome&ie=UTF-8"
+}

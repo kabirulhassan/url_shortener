@@ -1,8 +1,44 @@
 <%- include("header") -%>
+
 <section id="analytics">
     <div class="container-fluid stat-box">
         <h2>Analytics</h2>
-        
+        <table>
+
+            <thead>
+                <th>Full Url</th>
+                <th>Short Url</th>
+                <th>Clicks</th>
+            </thead>
+            <tbody>
+               <% shortUrls.forEach(shortUrl => { %>
+              <tr>
+                <td><a href="<%= shortUrl.full %>" target="_blank"><%= shortUrl.full %></a></td>
+                <script>
+                  function myfunction() {
+                    var copyText = document.getElementById("text");
+                 
+                    copyText.select();
+                    copyText.setSelectionRange(0, 9999);
+                 
+                    navigator.clipboard.writeText(copyText.a)
+                 
+                    alert("Copied the Text : " + copyText.a);
+                  }
+                 </script>
+                <div class="copy-text"><td><a id="text" href="<%= shortUrl.short %>" target="_blank"><%= shortUrl.short %></a>
+                <button class="copy" onclick="myfunction()">Copy
+                  <i class="fa fa-clone"></i>
+                </button>
+                </td>
+              </div> 
+                <td><%= shortUrl.clicks %></td>
+              </tr>
+            <% }) %>
+            </tbody>
+    
+    
+        </table>
     </div>
 </section>
 <%- include("footer") -%>

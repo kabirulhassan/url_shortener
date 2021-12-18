@@ -102,31 +102,6 @@ input:focus{
 .hidden{
     visibility: hidden;
 }
-
-.stat-box{
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    text-align: center;
-    justify-content: space-evenly;
-    background-color: black;
-    color: white;
-    height: 100%;
-    border-radius: 20px;
-    padding: 20px 5px;
-    margin: 20px 0;
-}
-
-table{
-    min-width: 50%;
-    border: 1px solid #ddd;
-    border-radius: 1em;
-    margin: 0 auto;
-    min-height: 70vh;
-    overflow: hidden;
-}
-
-
 @media screen and (max-width: 720px) {
     .url-box>input{
         width: 70%;
@@ -136,11 +111,6 @@ table{
     }
     .tagline{
         font-size: 2.5rem;
-    }
-    th, td{
-        max-width: 33vw;
-        overflow: scroll;
-        padding-top: 5px;
     }
 }
 

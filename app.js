@@ -1,5 +1,32 @@
-require('dotenv').config();
+require('dotenv').config(); //getting env variables
 
+const { auth } = require('express-openid-connect'); //openid connect for auth0
+//configuration for auth0
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.SECRET,
+    baseURL: process.env.BASEURL,
+    clientID: process.env.CLIENTID,
+    issuerBaseURL: process.env.ISSUERBASEURL
+  };
+
+const dummyURLs = 
+[{
+    longUrl: 'https://www.google.com',
+    shortUrl: 'https://www.google.com',
+    clicks: 0
+},
+{
+    longUrl: 'https://www.facebook.com',
+    shortUrl: 'https://www.facebook.com',
+    clicks: 0
+},
+{
+    longUrl: 'https://www.youtube.com',
+    shortUrl: 'https://www.youtube.com',
+    clicks: 0
+}];
 const express = require('express');
 const mongoose = require('mongoose');
 const shortid = require('shortid');
@@ -23,6 +50,12 @@ app.get("/", (req, res) => {
         hidden: shortURL? "" : "hidden"
     });
 });
+app.get("/analytics", (req, res) => {
+    res.render(
+        'analytics',{
+            urls: dummyURLs
+        });
+    });
 
 app.post('/Url', async (req, res) => {
     await ShortUrl.create({ longUrl: req.body.Url })
@@ -58,3 +91,4 @@ app.listen(port, function(){
     console.log('Server started on port '+port);
 });
 
+app.use(auth(config)); // auth router attaches /login, /logout, and /callback routes to the baseURL

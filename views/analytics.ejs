@@ -3,6 +3,7 @@
 <section id="analytics">
     <div class="container-fluid stat-box">
         <h2>Analytics</h2>
+        <div class="table-div">
         <table>
 
             <thead>
@@ -11,9 +12,9 @@
                 <th>Clicks</th>
             </thead>
             <tbody>
-               <% shortUrls.forEach(shortUrl => { %>
+                <% urls.forEach(url => { %>
               <tr>
-                <td><a href="<%= shortUrl.full %>" target="_blank"><%= shortUrl.full %></a></td>
+                <td><a href="<%= url.longUrl %>" target="_blank"><%= url.longUrl %></a></td>
                 <script>
                   function myfunction() {
                     var copyText = document.getElementById("text");
@@ -26,13 +27,13 @@
                     alert("Copied the Text : " + copyText.a);
                   }
                  </script>
-                <div class="copy-text"><td><a id="text" href="<%= shortUrl.short %>" target="_blank"><%= shortUrl.short %></a>
+                <div class="copy-text"><td><a id="text" href="<%= url.shortUrl %>" target="_blank"><%= url.shortUrl %></a>
                 <button class="copy" onclick="myfunction()">Copy
                   <i class="fa fa-clone"></i>
                 </button>
                 </td>
               </div> 
-                <td><%= shortUrl.clicks %></td>
+              <td><%= url.clicks %></td>
               </tr>
             <% }) %>
             </tbody>
@@ -40,5 +41,6 @@
     
         </table>
     </div>
+</div>
 </section>
 <%- include("footer") -%>

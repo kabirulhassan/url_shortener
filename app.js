@@ -89,25 +89,25 @@ app.post('/shortUrls', async (req, res) => {
     
   })
   
-  /*app.get('/:Url', async (req, res) => {
-    const short = await ShortUrl.findOne({ shortUrl: req.params.shortUrl })
+  app.get('/:short', async (req, res) => {
+    const short = await ShortUrl.findOne({ shortUrl: req.params.short})
     if (short == null) return res.sendStatus(404)
   
     
     short.clicks++
     short.save()
   
-    res.redirect(Url.longUrl)
-  })*/
+    res.redirect(short.longUrl)
+  })
 
-  router.get('/:code',async (req, res) => {
+ /* router.get('/:code',async (req, res) => {
     try {
-        const short = await ShortUrl.findOne({ urlCode: req.params.code});
+        const short = await ShortUrl.findOne({ shortUrl: req.params.code});
 
          console.log(short);
          console.log( req.params.code);
         if(short){
-            return res.redirect(ShortUrl.longUrl);
+            return res.redirect(Url.longUrl);
         }
         else
         {
@@ -122,8 +122,10 @@ app.post('/shortUrls', async (req, res) => {
     }
 })
 
+
+module.exports = router;
   
-  
+  */
 //Connect to database
 connectDB();
 

@@ -100,32 +100,7 @@ app.post('/shortUrls', async (req, res) => {
     res.redirect(short.longUrl)
   })
 
- /* router.get('/:code',async (req, res) => {
-    try {
-        const short = await ShortUrl.findOne({ shortUrl: req.params.code});
 
-         console.log(short);
-         console.log( req.params.code);
-        if(short){
-            return res.redirect(Url.longUrl);
-        }
-        else
-        {
-            return res.status(404).json('No url found');
-
-        }
-    }
-    catch(err)
-    {
-      console.error(err);
-      res.status(500).json('Server error');
-    }
-})
-
-
-module.exports = router;
-  
-  */
 //Connect to database
 connectDB();
 

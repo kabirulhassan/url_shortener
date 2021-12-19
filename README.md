@@ -1,7 +1,6 @@
 # URL Shortener
 THis project is currently hosted in beta and hosted at : https://walkover-project.herokuapp.com/
-
-This app allows you to convert long urk into short url and track its activity smoothly. 
+This tool allows you to convert long urk into short url and track its activity smoothly. 
 
 # Table Of Contents
 1. Running Locally

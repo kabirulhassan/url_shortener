@@ -63,6 +63,10 @@ app.get("/", async (req, res) => {
         console.log(req.oidc.user.sub);
 });
 app.get("/analytics", (req, res) => {
+  if(!req.oidc.isAuthenticated()){
+    // alert("Please login to view analytics");
+    res.redirect('/login');
+  }
   ShortUrl.find({}, (err, urls) => {
     if (err) {
       console.log(err);
@@ -82,8 +86,12 @@ app.get("/analytics", (req, res) => {
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
     // const baseUrl = process.env.BASEURL;
+    if(req.oidc.isAuthenticated()){
+      await ShortUrl.create({ longUrl: longUrl, Userid: req.oidc.user.sub });
+    }else{
+      await ShortUrl.create({ longUrl: longUrl });
+    }
 
-    await ShortUrl.create({ longUrl: longUrl });
     const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });
     // console.log(foundUrlObject);
     const foundShortUrl = foundUrlObject.shortUrl;

@@ -178,8 +178,4 @@ scrollbar-width: none;  /* Firefox */
     .navbar-nav{
         text-align: center;
     }
-    .copy{
-        position: fixed;
-        margin: 20px 2rem 20px -2rem;
-    }
 }

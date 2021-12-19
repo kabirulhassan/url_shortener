@@ -1,5 +1,6 @@
 # URL Shortener
-THis project is currently hosted in beta and hosted at : https://walkover-project.herokuapp.com/
+This project is currently hosted in beta and hosted at : https://walkover-project.herokuapp.com/
+
 This tool allows you to convert long urk into short url and track its activity smoothly. 
 
 # Table Of Contents

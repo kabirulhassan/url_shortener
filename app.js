@@ -2,11 +2,12 @@ require('dotenv').config(); //getting env variables
 
 const { auth } = require('express-openid-connect'); //openid connect for auth0
 //configuration for auth0
+const baseUrl = process.env.BASEURL || "walkover-project.herokuapp.com";
 const config = {
     authRequired: false,
     auth0Logout: true,
     secret: process.env.SECRET,
-    baseURL: process.env.BASEURL,
+    baseURL: baseUrl,
     clientID: process.env.CLIENTID,
     issuerBaseURL: process.env.ISSUERBASEURL
   };
@@ -66,7 +67,7 @@ app.get("/analytics", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-        const baseUrl = process.env.BASEURL;
+        // const baseUrl = process.env.BASEURL;
         urls.forEach(url => {
             url.shortUrl=baseUrl+'/'+url.shortUrl;
         });
@@ -80,7 +81,7 @@ app.get("/analytics", (req, res) => {
 
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
-    const baseUrl = process.env.BASEURL;
+    // const baseUrl = process.env.BASEURL;
 
     await ShortUrl.create({ longUrl: longUrl });
     const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });

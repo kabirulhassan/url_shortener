@@ -40,7 +40,7 @@ mongoose.connect('mongodb+srv://Diyasini:Riya%40123@cluster0.esnm5.mongodb.net/m
 
 const port = process.env.PORT||3000;
 
-const shortURL= 'curt/rf23rf24y';
+// const shortURL= 'curt/rf23rf24y';
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -49,14 +49,11 @@ app.use(auth(config)); // auth router attaches /login, /logout, and /callback ro
 
 
 app.get("/", async (req, res) => {
-    const shortUrls = await ShortUrl.find()
-/*=======
-app.get("/", (req, res) => {
-    console.log(req.oidc.isAuthenticated());*/
+    
 
     res.render('index',{
-        shortURL: shortUrls,
-        hidden: shortURL? "" : "hidden"
+        shortURL: "",
+        hidden: "hidden"
     });
 });
 app.get("/analytics", (req, res) => {
@@ -67,12 +64,17 @@ app.get("/analytics", (req, res) => {
     });
 
 app.post('/shortUrls', async (req, res) => {
-    await ShortUrl.create({ longUrl: req.body.fullUrl })
-    
+    const longUrl = req.body.fullUrl;
+    await ShortUrl.create({ longUrl: longUrl });
+    const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });
+    // console.log(foundUrlObject);
+    const foundShortUrl = foundUrlObject.shortUrl;
+    console.log(foundShortUrl);
     res.render('index',{
-  
-    })
-    res.redirect('/')
+        shortURL: foundShortUrl,
+        hidden: foundShortUrl? "" : "hidden"
+    });
+    // res.redirect('/')
     
   })
   

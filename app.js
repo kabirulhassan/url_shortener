@@ -58,7 +58,8 @@ app.get("/", async (req, res) => {
         shortURL: "",
         hidden: "hidden"
     });
-    console.log(req.oidc.user.sub);
+    if(req.oidc.isAuthenticated())
+        console.log(req.oidc.user.sub);
 });
 app.get("/analytics", (req, res) => {
   ShortUrl.find({}, (err, urls) => {

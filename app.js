@@ -57,11 +57,16 @@ app.get("/", async (req, res) => {
     });
 });
 app.get("/analytics", (req, res) => {
-    res.render(
-        'analytics',{
-            urls: ShortUrl
-        });
-    });
+  ShortUrl.find({}, (err, urls) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render("analytics", {
+        urls: urls,
+      });
+    }
+  });
+});
 
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;

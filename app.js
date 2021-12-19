@@ -110,32 +110,7 @@ app.post('/shortUrls', async (req, res) => {
     res.redirect(short.longUrl)
   })
 
- /* router.get('/:code',async (req, res) => {
-    try {
-        const short = await ShortUrl.findOne({ shortUrl: req.params.code});
 
-         console.log(short);
-         console.log( req.params.code);
-        if(short){
-            return res.redirect(Url.longUrl);
-        }
-        else
-        {
-            return res.status(404).json('No url found');
-
-        }
-    }
-    catch(err)
-    {
-      console.error(err);
-      res.status(500).json('Server error');
-    }
-})
-
-
-module.exports = router;
-  
-  */
 //Connect to database
 connectDB();
 
@@ -145,7 +120,6 @@ app.use(express.json({extented: false}));
 //Define routes
 app.use('/',require('./routes/app'));
 app.use('/api/url', require('./routes/url'));
-
 
 app.listen(port, function(){
     console.log('Server started on port '+port);

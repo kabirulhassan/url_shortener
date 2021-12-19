@@ -67,7 +67,7 @@ app.get("/analytics", (req, res) => {
     // alert("Please login to view analytics");
     res.redirect('/login');
   }
-  ShortUrl.find({}, (err, urls) => {
+  ShortUrl.find({Userid: req.oidc.user.sub}, (err, urls) => {
     if (err) {
       console.log(err);
     } else {

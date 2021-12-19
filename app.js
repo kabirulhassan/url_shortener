@@ -2,7 +2,7 @@ require('dotenv').config(); //getting env variables
 
 const { auth } = require('express-openid-connect'); //openid connect for auth0
 //configuration for auth0
-const baseUrl = process.env.BASEURL || "walkover-project.herokuapp.com";
+const baseUrl = process.env.BASEURL || "https://walkover-project.herokuapp.com/";
 const config = {
     authRequired: false,
     auth0Logout: true,

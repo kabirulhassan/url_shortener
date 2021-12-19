@@ -1,3 +1,7 @@
+# URL Shortener
+This project is currently hosted in beta and hosted at : https://walkover-project.herokuapp.com/
+
+This tool allows you to convert long urk into short url and track its activity smoothly. 
 
 # Table Of Contents
 1. Running Locally
@@ -35,8 +39,13 @@ Analytics Page
 # Design
 Colour Palette
 
-   rgb(201, 201, 241);
-   #809ce2
+   #ffcd57
+   white
+   #ffcd57
+   black
+   #ddd
+   
+   
    
 # Routes
 1. /-> Landing Page

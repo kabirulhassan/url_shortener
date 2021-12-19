@@ -2,7 +2,7 @@ require('dotenv').config(); //getting env variables
 
 const { auth } = require('express-openid-connect'); //openid connect for auth0
 //configuration for auth0
-const baseUrl = process.env.BASEURL || "walkover-project.herokuapp.com";
+const baseUrl = process.env.BASEURL || "https://walkover-project.herokuapp.com";
 const config = {
     authRequired: false,
     auth0Logout: true,
@@ -63,7 +63,11 @@ app.get("/", async (req, res) => {
         console.log(req.oidc.user.sub);
 });
 app.get("/analytics", (req, res) => {
-  ShortUrl.find({}, (err, urls) => {
+  if(!req.oidc.isAuthenticated()){
+    // alert("Please login to view analytics");
+    res.redirect('/login');
+  }
+  ShortUrl.find({Userid: req.oidc.user.sub}, (err, urls) => {
     if (err) {
       console.log(err);
     } else {
@@ -82,8 +86,12 @@ app.get("/analytics", (req, res) => {
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
     // const baseUrl = process.env.BASEURL;
+    if(req.oidc.isAuthenticated()){
+      await ShortUrl.create({ longUrl: longUrl, Userid: req.oidc.user.sub });
+    }else{
+      await ShortUrl.create({ longUrl: longUrl });
+    }
 
-    await ShortUrl.create({ longUrl: longUrl });
     const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });
     // console.log(foundUrlObject);
     const foundShortUrl = foundUrlObject.shortUrl;

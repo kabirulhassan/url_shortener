@@ -58,12 +58,17 @@ app.get("/", async (req, res) => {
         shortURL: "",
         hidden: "hidden"
     });
+    console.log(req.oidc.user.sub);
 });
 app.get("/analytics", (req, res) => {
   ShortUrl.find({}, (err, urls) => {
     if (err) {
       console.log(err);
     } else {
+        const baseUrl = process.env.BASEURL;
+        urls.forEach(url => {
+            url.shortUrl=baseUrl+'/'+url.shortUrl;
+        });
       res.render("analytics", {
         isSignedIn: req.oidc.isAuthenticated(),
         urls: urls,
@@ -74,7 +79,7 @@ app.get("/analytics", (req, res) => {
 
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
-    const baseUrl = con.get('baseUrl');
+    const baseUrl = process.env.BASEURL;
 
     await ShortUrl.create({ longUrl: longUrl });
     const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });

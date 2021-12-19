@@ -32,8 +32,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const shortid = require('shortid');
 const connectDB = require('./config/db');
-const ShortUrl = require('./models/Url')
-const config = require('config');
+const ShortUrl = require('./models/Url');
+const con = require('config');
+
 
 const app = express();
 
@@ -71,7 +72,7 @@ app.get("/analytics", (req, res) => {
 
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
-    const baseUrl = config.get('baseUrl');
+   const baseUrl = con.get('baseUrl');
     await ShortUrl.create({ longUrl: longUrl });
     const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });
     // console.log(foundUrlObject);

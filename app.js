@@ -88,6 +88,7 @@ app.post('/shortUrls', async (req, res) => {
     const foundShortUrl = foundUrlObject.shortUrl;
     console.log(foundShortUrl);
     res.render('index',{
+        isSignedIn: req.oidc.isAuthenticated(),
         shortURL: baseUrl + "/" + foundShortUrl,
         hidden: foundShortUrl? "" : "hidden"
     });

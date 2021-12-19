@@ -9,7 +9,11 @@ body{
 .navbar-brand{
     color: #ffcd57 !important;
     font-size: 2rem;
-    width: 0;
+    width: fit-content;
+}
+.sign{
+    margin: 15px 0;
+    font-size: 1rem;
 }
 
 .navbar-nav a{
@@ -139,7 +143,7 @@ thead:last-child, tbody:last-child, tr:last-child, td:last-child, th:last-child{
     border-right: none;
 }
 
-.copy{
+button{
     border: none;
     border-radius: 20px;
     background-color: #ffcd57;

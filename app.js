@@ -34,7 +34,7 @@ const shortid = require('shortid');
 const connectDB = require('./config/db');
 const ShortUrl = require('./models/Url');
 const con = require('config');
-
+const router = express.Router();
 
 const app = express();
 
@@ -100,9 +100,9 @@ app.post('/shortUrls', async (req, res) => {
     res.redirect(Url.longUrl)
   })*/
 
-  app.get('/:code',async (req, res) => {
+  router.get('/:code',async (req, res) => {
     try {
-        const short = await ShortUrl.findOne({ shortUrl: req.params.code});
+        const short = await ShortUrl.findOne({ urlCode: req.params.code});
 
          console.log(short);
          console.log( req.params.code);

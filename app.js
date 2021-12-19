@@ -32,7 +32,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const shortid = require('shortid');
 const connectDB = require('./config/db');
-const ShortUrl = require('./models/Url')
+const ShortUrl = require('./models/Url');
+const con = require('config');
+
 
 const app = express();
 
@@ -70,20 +72,21 @@ app.get("/analytics", (req, res) => {
 
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
+   const baseUrl = con.get('baseUrl');
     await ShortUrl.create({ longUrl: longUrl });
     const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });
     // console.log(foundUrlObject);
     const foundShortUrl = foundUrlObject.shortUrl;
     console.log(foundShortUrl);
     res.render('index',{
-        shortURL: foundShortUrl,
+        shortURL:baseUrl + "/" + foundShortUrl,
         hidden: foundShortUrl? "" : "hidden"
     });
     // res.redirect('/')
     
   })
   
-  app.get('/:Url', async (req, res) => {
+  /*app.get('/:Url', async (req, res) => {
     const shortUrl = await ShortUrl.findOne({ shortUrl: req.params.shortUrl })
     if (shortUrl == null) return res.sendStatus(404)
   
@@ -92,7 +95,7 @@ app.post('/shortUrls', async (req, res) => {
     shortUrl.save()
   
     res.redirect(Url.longUrl)
-  })
+  })*/
   
 //Connect to database
 connectDB();

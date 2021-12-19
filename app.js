@@ -34,7 +34,7 @@ const shortid = require('shortid');
 const connectDB = require('./config/db');
 const ShortUrl = require('./models/Url');
 const con = require('config');
-
+const router = express.Router();
 
 const app = express();
 
@@ -72,31 +72,60 @@ app.get("/analytics", (req, res) => {
 
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
-   const baseUrl = con.get('baseUrl');
+    const baseUrl = con.get('baseUrl');
+
     await ShortUrl.create({ longUrl: longUrl });
     const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });
     // console.log(foundUrlObject);
     const foundShortUrl = foundUrlObject.shortUrl;
     console.log(foundShortUrl);
     res.render('index',{
-        shortURL:baseUrl + "/" + foundShortUrl,
+        shortURL: baseUrl + "/" + foundShortUrl,
         hidden: foundShortUrl? "" : "hidden"
     });
+
+
     // res.redirect('/')
     
   })
   
-  /*app.get('/:Url', async (req, res) => {
-    const shortUrl = await ShortUrl.findOne({ shortUrl: req.params.shortUrl })
-    if (shortUrl == null) return res.sendStatus(404)
+  app.get('/:short', async (req, res) => {
+    const short = await ShortUrl.findOne({ shortUrl: req.params.short})
+    if (short == null) return res.sendStatus(404)
   
     
-    shortUrl.clicks++
-    shortUrl.save()
+    short.clicks++
+    short.save()
   
-    res.redirect(Url.longUrl)
-  })*/
+    res.redirect(short.longUrl)
+  })
+
+ /* router.get('/:code',async (req, res) => {
+    try {
+        const short = await ShortUrl.findOne({ shortUrl: req.params.code});
+
+         console.log(short);
+         console.log( req.params.code);
+        if(short){
+            return res.redirect(Url.longUrl);
+        }
+        else
+        {
+            return res.status(404).json('No url found');
+
+        }
+    }
+    catch(err)
+    {
+      console.error(err);
+      res.status(500).json('Server error');
+    }
+})
+
+
+module.exports = router;
   
+  */
 //Connect to database
 connectDB();
 

@@ -54,6 +54,7 @@ app.get("/", async (req, res) => {
     
 
     res.render('index',{
+        isSignedIn: req.oidc.isAuthenticated(),
         shortURL: "",
         hidden: "hidden"
     });
@@ -64,6 +65,7 @@ app.get("/analytics", (req, res) => {
       console.log(err);
     } else {
       res.render("analytics", {
+        isSignedIn: req.oidc.isAuthenticated(),
         urls: urls,
       });
     }

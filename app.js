@@ -85,16 +85,14 @@ app.get("/analytics", (req, res) => {
 
 app.post('/shortUrls', async (req, res) => {
     const longUrl = req.body.fullUrl;
-    // const baseUrl = process.env.BASEURL;
-    if(req.oidc.isAuthenticated()){
-      await ShortUrl.create({ longUrl: longUrl, Userid: req.oidc.user.sub });
-    }else{
-      await ShortUrl.create({ longUrl: longUrl });
-    }
+    const userId = req.oidc.isAuthenticated() ? req.oidc.user.sub : "public";
 
-    const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl });
-    // console.log(foundUrlObject);
-    const foundShortUrl = foundUrlObject.shortUrl;
+    if(await ShortUrl.findOne({ longUrl: longUrl, Userid: userId }) === null){
+      await ShortUrl.create({ longUrl: longUrl, Userid: userId });
+      console.log("new url created");
+    }
+    const foundUrlObject = await ShortUrl.findOne({ longUrl: longUrl, Userid: userId });
+    const foundShortUrl = await foundUrlObject.shortUrl;
     console.log(foundShortUrl);
     res.render('index',{
         isSignedIn: req.oidc.isAuthenticated(),
@@ -103,7 +101,6 @@ app.post('/shortUrls', async (req, res) => {
     });
 
 
-    // res.redirect('/')
     
   })
   

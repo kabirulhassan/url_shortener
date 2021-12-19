@@ -120,7 +120,6 @@ app.use(express.json({extented: false}));
 app.use('/',require('./routes/app'));
 app.use('/api/url', require('./routes/url'));
 
-
 app.listen(port, function(){
     console.log('Server started on port '+port);
 });

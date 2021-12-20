@@ -25,6 +25,7 @@ This tool allows you to convert long urk into short url and track its activity s
 3. Mongo(Database)
 4. AWS/Heroku(hosting)
 
+
 # Mockups
 
 Landing Page
@@ -49,7 +50,7 @@ Colour Palette
    
 # Routes
 1. /-> Landing Page
-2. /index -> Redirect Long Url to Short Url
+2. /app -> Redirect Long Url to Short Url
 3. /url -> Create short Url
 
 # Schema
@@ -61,64 +62,61 @@ URL SCHEMA
     
     shortUrl: String
     
-    date: { type:String, default: Date.now}
-    
- SHORTURL SCHEMA
- 
-  full:  
-       
-    type: String
-    
-    required: true
-  
-  short: 
-  
-    type: String
-    
-    required: true
-    
-    default: shortId.generate
-  
-  clicks: 
-  
-    type: Number
-    
-    required: true
-    
+    clicks:{
+    type:Number
     default: 0
+    }
+
     
     
 # API
 
 Prefix: /request/api.http
 
-Endpoints:
 
- get
- 
- post
+ POST http://localhost:3000/api/url/shorten 
+Content-Type: application/json
 
-# UI
+{
+"longUrl": "Give the long URL"
+}
 
-Prefix: /views/index 
+Response:
+HTTP/1.1 200 OK
 
-Endpoints:
+X-Powered-By: Express
 
-  set
+Content-Type: application/json; charset=utf-8
+
+Content-Length: 145
+
+ETag: W/"91-yqcnB4bv2XOjBf78PUwHlEABxC8"
+
+Date: Mon, 20 Dec 2021 10:59:30 GMT
+Connection: close
+
+{
+  "_id": "61bf4e6484a8d2732b01f0cc",
   
-  use
+  "longUrl": "Input long URL",
   
-  post
+  "clicks": No of Clicks,
   
-  get
+  "shortUrl": "Converted Short URL",
+  
+  "Browser": [],
+  
+  "__v": 0
+}
+
 
 # MVP Feature
 
 
 1. Convert long URL into short Url
 2. User can sign up using Auth()
-3. User can see the links that are converted
-4. User can track the activity of the click by the number if Clicks
+3. User can see the links that are converted in Analatics
+4. User can track the activity of the click by the number if Clicks once signed in
 
 
 

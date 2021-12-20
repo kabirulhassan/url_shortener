@@ -113,7 +113,9 @@ app.post('/shortUrls', async (req, res) => {
     const browserName = parser.setUA(ua).getBrowser().name;
     console.log(browserName);
     short.clicks++
-    short.save()
+    short.browserName.push({ browser: browserName });
+    short.save();
+    console.log(short);
   
     res.redirect(short.longUrl)
   })

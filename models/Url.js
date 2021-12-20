@@ -20,11 +20,10 @@ const urlSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    browserName: [
-        {
-          browser: String,
-        }
-      ]
+    browser: [{
+        browserName: String,
+        clicks: Number
+    }]
 })
 
 

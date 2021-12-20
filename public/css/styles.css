@@ -279,3 +279,29 @@ scrollbar-width: none;  /* Firefox */
       padding: 10px;
       border-radius: 30px;
   }
+
+  .browser-title{
+      color: #ffcd57;
+      text-overflow: ellipsis;
+      overflow: hidden;
+  }
+
+  .browser-close{
+      color: #ffcd57;
+      background-color: transparent;
+      font-size: 2rem;
+  }
+
+  .detail-body{
+      color: #ffcd57;
+  }
+  .modal-footer button{
+        background-color: #ffcd57;
+        border: none;
+        border-radius: 20px;
+        color: black;
+  }
+
+  .browser-content{
+      background-color: black;
+  }

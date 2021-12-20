@@ -21,7 +21,44 @@
                 </button>
                 </td>
               </div> 
-              <td><%= url.clicks %></td>
+              <td>
+                <button type="button" class="show-browser" data-bs-toggle="modal" data-bs-target="#<%= url.bid %>Modal">
+                  <%= url.clicks %>
+                </button>
+              </td>
+              
+
+              <div class="modal fade" id="<%= url.bid %>Modal" tabindex="-1" aria-labelledby="<%= url.bid %>ModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content browser-content">
+                    <div class="modal-header">
+                      <h6 class="modal-title browser-title" id="<%= url.bid %>ModalLabel"><%= url.shortUrl %></h6>
+                      <button type="button" class="browser-close" data-bs-dismiss="modal"><i class="fas fa-times-circle"></i></button>
+                    </div>
+                    <div class="modal-body detail-body">
+                      <p>Clicks on browsers</p>
+                      <% if(url.browser) { %>
+                        <% url.browser.forEach(browser => { %>
+                          <div class="browser-detail row">
+                            <div class="col">
+                              <%= browser.browserName %>
+                            </div>
+                            <div class="col">
+                              <%= browser.clicks %>
+                            </div>
+                            <!-- <p><%= browser.browserName %></p>
+                            <p><%= browser.clicks %></p> -->
+                          </div>
+                          <hr>
+                        <% });} %>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <td><%= url.clicks %></td> -->
               </tr>
             <% }) %>
             </tbody>

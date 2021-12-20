@@ -72,8 +72,8 @@ app.get("/analytics", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-        // const baseUrl = process.env.BASEURL;
         urls.forEach(url => {
+            url.bid = "b"+url.shortUrl;
             url.shortUrl=baseUrl+'/'+url.shortUrl;
         });
       res.render("analytics", {

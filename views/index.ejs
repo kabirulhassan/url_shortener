@@ -18,10 +18,33 @@
            
             <div class="url-box box-short <%=hidden%>">
                 <a id="short-url" href="<%= shortURL %>" target="blank"><%= shortURL %></a>
-                <button class="short-btn share-btn"><i class="fas fa-share-alt"></i></button>
+                <button class="short-btn share-btn share-button"><i class="fas fa-share-alt"></i></button>
             </div>
       
         </div>
     </section>
+    <div class="share-dialog">
+        <header class="share-header">
+          <h3 class="dialog-title">Share the link</h3>
+          <button class="close-button"><i class="fas fa-times-circle"></i></button>
+        </header>
+        <div class="targets">
+          <a class="social-button"><button><i class="fab fa-facebook"></i></button></a>
+          
+          <a class="social-button"><button><i class="fab fa-linkedin"></i></button></a>
+          
+          <a class="social-button"><button><i class="fab fa-instagram"></i></button></a>
+          
+          <a class="social-button"><button><i class="far fa-envelope"></i></button></a>
+        </div>
+        <div class="link">
+          <div class="copy-url"><%=shortURL%></div>
+          <button class="copy-link">Copy</button>
+        </div>
+      </div>
+      
+    
+    
+    <script src="scripts/share.js"></script>
 
 <%- include("footer") -%>

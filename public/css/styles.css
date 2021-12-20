@@ -132,8 +132,8 @@ table{
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 1em;
-    max-width: fit-content;
-    min-width: 70vw;
+    /* max-width: fit-content;
+    min-width: 70vw; */
 }
 
 th, td{

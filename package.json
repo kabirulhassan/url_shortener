@@ -24,6 +24,7 @@
     "nodemon": "^2.0.15",
     "open": "^8.4.0",
     "shortid": "^2.2.16",
+    "ua-parser-js": "^1.0.2",
     "valid-url": "^1.0.9"
   }
 }

@@ -108,10 +108,10 @@ app.post('/shortUrls', async (req, res) => {
   app.get('/:short', async (req, res) => {
     const short = await ShortUrl.findOne({ shortUrl: req.params.short})
     if (short == null) return res.sendStatus(404)
-    const parser = new UAParser();
-    const ua = req.headers['user-agent'];
-    const browserName = parser.setUA(ua).getBrowser().name;
-    console.log(browserName);
+    // const parser = new UAParser();
+    // const ua = req.headers['user-agent'];
+    // const browserName = parser.setUA(ua).getBrowser().name;
+    // console.log(browserName);
     short.clicks++
     short.save()
   

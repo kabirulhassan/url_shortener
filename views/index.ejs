@@ -39,12 +39,11 @@
         </div>
         <div class="link">
           <div class="copy-url"><%=shortURL%></div>
-          <button class="copy-link">Copy</button>
+          <script>copyUrl = "<%=shortURL%>"</script>
+          <button onclick="copyToClipboard(copyUrl)" class="copy-link">Copy</button>
         </div>
       </div>
-      
-    
     
     <script src="scripts/share.js"></script>
-
+    <script src="scripts/copy.js"></script>
 <%- include("footer") -%>

@@ -73,25 +73,32 @@ URL SCHEMA
 
 Prefix: /request/api.http
 
-Endpoints:
 
- get
- 
- post
+ POST http://localhost:3000/api/url/shorten 
+Content-Type: application/json
 
-# UI
+{
+"longUrl": "Give the long URL"
+}
 
-Prefix: /views/index 
+Response:
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Content-Type: application/json; charset=utf-8
+Content-Length: 145
+ETag: W/"91-yqcnB4bv2XOjBf78PUwHlEABxC8"
+Date: Mon, 20 Dec 2021 10:59:30 GMT
+Connection: close
 
-Endpoints:
+{
+  "_id": "61bf4e6484a8d2732b01f0cc",
+  "longUrl": "Input long URL",
+  "clicks": No of Clicks,
+  "shortUrl": "Conerted Short URL",
+  "Browser": [],
+  "__v": 0
+}
 
-  set
-  
-  use
-  
-  post
-  
-  get
 
 # MVP Feature
 

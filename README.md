@@ -102,7 +102,7 @@ Connection: close
   
   "clicks": No of Clicks,
   
-  "shortUrl": "Conerted Short URL",
+  "shortUrl": "Converted Short URL",
   
   "Browser": [],
   

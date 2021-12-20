@@ -91,6 +91,7 @@ input:focus{
     margin: auto 5px;
     color: black;
     overflow: scroll;
+    word-break: keep-all;
 }
 .short-btn{
     height: 50px;

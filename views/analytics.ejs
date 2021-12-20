@@ -15,8 +15,20 @@
                 <% urls.forEach(url => { %>
               <tr>
                 <td><a href="<%= url.longUrl %>" target="_blank"><%= url.longUrl %></a></td>
-                <div class="copy-text"><td><a href="<%= url.shortUrl %>" target="_blank"><%= url.shortUrl %></a>
-                <button id="<%= url.shortUrl %>" class="copy" onclick="copyToClipboard(this)">Copy
+                <script>
+                  function myfunction() {
+                    var copyText = document.getElementById("text");
+                 
+                    copyText.select();
+                    copyText.setSelectionRange(0, 9999);
+                 
+                    navigator.clipboard.writeText(copyText.a)
+                 
+                    alert("Copied the Text : " + copyText.a);
+                  }
+                 </script>
+                <div class="copy-text"><td><a id="text" href="<%= url.shortUrl %>" target="_blank"><%= url.shortUrl %></a>
+                <button class="copy" onclick="myfunction()">Copy
                   <i class="fa fa-clone"></i>
                 </button>
                 </td>

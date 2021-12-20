@@ -20,7 +20,7 @@ const urlSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    Browser: BrowserSchema
+    Browser: [BrowserSchema]
     
 })
 

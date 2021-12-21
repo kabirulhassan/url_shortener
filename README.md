@@ -31,13 +31,13 @@ This tool allows you to convert long urk into short url and track its activity s
 Landing Page
   https://share.balsamiq.com/c/8SGHcFNAP9D5qWc5BSk87q.png
   ![8SGHcFNAP9D5qWc5BSk87q (1)](https://share.balsamiq.com/c/3zfANeQzckXzYunPGqjpPm.png)
-  https://share.balsamiq.com/c/74vtc3a1eUYoL5YLxqHrnd.png
-  ![image](https://user-images.githubusercontent.com/90218870/146899649-71da53a6-cfdf-4e29-ba89-576c7a99c8c6.png)
+  https://share.balsamiq.com/c/74vtc3a1eUYoL5YLxqHrnd.png 
+  ![image](https://user-images.githubusercontent.com/90218870/146903645-1a34cc6e-0f95-4828-a1b1-0aaa7d814695.png)
 
   
 Analytics Page
- https://share.balsamiq.com/c/ozrZ9CXpcgkBYzNLoUXSKW.png  
-  ![ozrZ9CXpcgkBYzNLoUXSKW](https://user-images.githubusercontent.com/90218870/146599792-5855f68d-1d33-4a33-9fad-ccd77ec683cc.png)
+ https://share.balsamiq.com/c/vafMv4utLSEYdTuwRfAHMD.png
+  ![image](https://user-images.githubusercontent.com/90218870/146903751-2fd762ca-e51a-405f-83ed-db224b33dbd7.png)
 
 
 # Design

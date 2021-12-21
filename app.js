@@ -12,22 +12,6 @@ const config = {
     issuerBaseURL: process.env.ISSUERBASEURL
   };
 
-const dummyURLs = 
-[{
-    longUrl: 'https://www.google.com',
-    shortUrl: 'https://www.google.com',
-    clicks: 0
-},
-{
-    longUrl: 'https://www.facebook.com',
-    shortUrl: 'https://www.facebook.com',
-    clicks: 0
-},
-{
-    longUrl: 'https://www.youtube.com',
-    shortUrl: 'https://www.youtube.com',
-    clicks: 0
-}];
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -40,11 +24,14 @@ const UAParser = require('ua-parser-js');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://Diyasini:Riya%40123@cluster0.esnm5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+const mongoUserName = process.env.MONGOUSERNAME;
+const mongoPassword = process.env.MONGOPASSWORD;
+const dbName = process.env.DBNAME;
+const mongourl = "mongodb+srv://"+mongoUserName+":"+mongoPassword+"@cluster0.esnm5.mongodb.net/"+dbName+"?retryWrites=true&w=majority";
+
 
 const port = process.env.PORT||3000;
 
-// const shortURL= 'curt/rf23rf24y';
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: false}));
 app.use(express.static('public'));
@@ -65,7 +52,6 @@ app.get("/", async (req, res) => {
 });
 app.get("/analytics", (req, res) => {
   if(!req.oidc.isAuthenticated()){
-    // alert("Please login to view analytics");
     res.redirect('/login');
   }
   ShortUrl.find({Userid: req.oidc.user.sub}, (err, urls) => {

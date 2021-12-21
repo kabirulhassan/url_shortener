@@ -72,8 +72,8 @@ app.get("/analytics", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-        // const baseUrl = process.env.BASEURL;
         urls.forEach(url => {
+            url.bid = "b"+url.shortUrl;
             url.shortUrl=baseUrl+'/'+url.shortUrl;
         });
       res.render("analytics", {
@@ -112,10 +112,26 @@ app.post('/shortUrls', async (req, res) => {
     const ua = req.headers['user-agent'];
     const browserName = parser.setUA(ua).getBrowser().name;
     console.log(browserName);
-    short.clicks++
-    short.save()
+    short.clicks++;
+    console.log("new Call");
+    let found = false;
+    for (let i = 0; i < short.browser.length; i++) {
+      if (short.browser[i].browserName === browserName) {
+        short.browser[i].clicks++;
+        found = true;
+        break;
+      }
+    }
+    console.log(found);
+    if (!found) {
+      console.log("pushing");
+      short.browser.push({ browserName: browserName });
+    }
+
+    console.log(short.browser);
+    short.save();
   
-    res.redirect(short.longUrl)
+    res.redirect(short.longUrl) 
   })
 
 
@@ -131,6 +147,8 @@ app.use('/api/url', require('./routes/url'));
 
 app.listen(port, function(){
     console.log('Server started on port '+port);
+
 });
+
 
 

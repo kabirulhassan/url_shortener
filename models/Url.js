@@ -20,8 +20,15 @@ const urlSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    Browser: BrowserSchema
-    
+    browser: [
+        {
+            browserName: String,
+          clicks: {
+            type: Number,
+            default: 1,
+          }
+        }
+    ]
 })
 
 
